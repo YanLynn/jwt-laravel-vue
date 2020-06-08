@@ -11,10 +11,28 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                     <router-link to="/post" class="nav-link">post</router-link>
+                </li>
+                <li class="nav-item" v-if="isLoggedin == null">
                      <router-link to="/login" class="nav-link">Loginn</router-link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" v-if="isLoggedin == null">
                    <router-link to="/register" class="nav-link">Register</router-link>
+                </li>
+                <li class="nav-item dropdown" v-if="isLoggedin != null">
+                    <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >{{currentUser.name}}</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="#!" @click.prevent="logout" class="dropdown-item">Logout</a>
+                    
+                    </div>
                 </li>
                 </ul>
               
@@ -22,3 +40,27 @@
             </nav>
 </template>
 
+<script>
+export default {
+    name: 'app-header',
+    data(){
+        return {
+            isLoggedin:null
+        }
+    },
+    methods:{
+        logout(){
+            this.$store.commit('logout');
+            this.$router.push('/login');
+        }
+    },
+    mounted() {
+        this.isLoggedin = this.$store.getters.currentUser
+    },
+    computed:{
+        currentUser(){
+            return this.$store.getters.currentUser
+        }
+    }
+}
+</script>

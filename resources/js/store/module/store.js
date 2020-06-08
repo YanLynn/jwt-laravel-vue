@@ -13,7 +13,7 @@ export const state = {
     registeredUser: null,
 };
 
-console.log(state)
+
 
 
 export const getters = {

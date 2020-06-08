@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Repositories\postrepository\PostRepositoryInterface;
+namespace App\Http\Controllers\recruiterApi;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repositories\postrepository\PostRepositoryInterface;
 use JWTAuth;
 use Response;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Support\Facades\Auth;
-// use Auth;
 use App\User;
-class PostController extends Controller
+class postController extends Controller
 {
     protected $post;
 
@@ -20,12 +21,6 @@ class PostController extends Controller
     public function index()
     {
        
-        // $data = [
-        //     'posts' => $this->post->all()
-        // ];
-        //    return Auth::user();
-        // return response()->json($user); 
-        // return JWTAuth::user();
         return response()->json($this->post->all());
     }
 }

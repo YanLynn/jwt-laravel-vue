@@ -12,6 +12,7 @@ import VueAxios from 'vue-axios';
 Vue.use(VueAxios, axios)
 Vue.use(VeeValidate);
 Vue.use(VueRouter);
+
 Vue.use(Vuex);
 
 
@@ -21,20 +22,6 @@ const router = new VueRouter({
 }); 
 
 
-// const store = new Vuex.Store(storeData);
-
-
-// const api = axios.create({
-//   baseURL: '/api/'
-// });
-
-// if(store.getters.token){
-//   api.defaults.headers.common = {'Authorization': `Bearer ${store.getters.token}`}
-// }
-
-// console.log('apiaaa',api.defaults.headers.common)
-
-// important script for component permission
 router.beforeEach((to, from, next) => {
     // login component
     
@@ -45,20 +32,23 @@ router.beforeEach((to, from, next) => {
       }
       else if(authUser || authUser.token){
         // for admin 
-         if(to.meta.Admin){
+         if(to.meta.recruiter){
+          //  console.log('re')
           const authUser = store.getters.currentUser
-          if(authUser.role === 1){
+          if(authUser.role === 2){
             next()
           }else{
+            alert('1')
             next({name:'Unauthorized'})
           }
         }
         // for User component
-       if(to.meta.User){
+       if(to.meta.jobseeker){
         const authUser = store.getters.currentUser
-        if(authUser.role === 2){
+        if(authUser.role === 3){
           next()
         }else{
+          alert('2')
           next({name:'Unauthorized'})
         }
       }
@@ -79,6 +69,4 @@ const app = new Vue({
     router,
     store,
 
-
-    
 });

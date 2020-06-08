@@ -59,12 +59,11 @@ export default {
       this.$store.dispatch("login");
       login(this.$data.formLogin)
         .then(res => {
-          // console.log(res)
-          // console.log(this.$store.getters.currentUser)
+          // console.log(this.$store.commit());
           this.$store.commit("loginSuccess", res);
           
           const getLoginUser = this.$store.getters.currentUser;
-          const redirectTo = getLoginUser.role === 2 ? 'user' :  'admin'
+          const redirectTo = getLoginUser.role === 2 ? 'recruiter' :  'jobseeker'
           this.$router.push({path: redirectTo})
           //this.$router.push({ path: "/" });
         })

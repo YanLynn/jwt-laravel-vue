@@ -44,7 +44,7 @@
       </div>
     </nav>
     
-  </div>
+  </div> 
 </template>
 
 <script>
@@ -56,6 +56,7 @@ export default {
             this.$router.push('/login');
         }
     },
+    
     computed:{
         currentUser(){
             return this.$store.getters.currentUser

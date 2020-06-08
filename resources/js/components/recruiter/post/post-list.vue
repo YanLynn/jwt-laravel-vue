@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="posts in post" key="post.id">
+                <tr v-for="posts in post" :key="posts.id">
                     
                     <td>{{posts.title}}</td>
                     <td>{{posts.description}}</td>
@@ -20,7 +20,7 @@
     </div>
 </template>
 <script>
-import { api } from '../../../api/v1';
+import { api }  from '../../../api/v1';
 export default {
     data() {
         return {

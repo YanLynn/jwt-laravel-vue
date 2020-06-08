@@ -27,7 +27,7 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 });
 
 Route::middleware('jwt.auth:api')->group(function () {
-	Route::get('post','PostController@index');
+	// Route::get('post','PostController@index');
 });
 
 
@@ -42,4 +42,4 @@ Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
    
-    }); 
+});

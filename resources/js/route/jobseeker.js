@@ -1,4 +1,4 @@
-import home from '../components/user/Home/Home';
+import home from '../components/jobseeker/Home/Home';
 
 const route = [
     {
@@ -6,8 +6,8 @@ const route = [
         component: home,
         meta: {
             reqiuresAuth: true,
-            Admin:false, // for only admin component
-            User:true
+            recruiter:false, // for only admin component
+            jobseeker:true
           }
     }
 ];
