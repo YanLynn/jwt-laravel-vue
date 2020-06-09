@@ -8,11 +8,12 @@ import store from '../js/store/index';
 import Index from './components/index'; 
 import axios from 'axios'
 import VueAxios from 'vue-axios';
-
+import VueI18n from 'vue-i18n';
+import en from '../js/lang/en';
+import ja from '../js/lang/ja';
 Vue.use(VueAxios, axios)
 Vue.use(VeeValidate);
 Vue.use(VueRouter);
-
 Vue.use(Vuex);
 
 
@@ -23,8 +24,6 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
-    // login component
-    
     if(to.meta.reqiuresAuth){
       const authUser = store.getters.currentUser
       if(!authUser || !authUser.token){
@@ -33,7 +32,6 @@ router.beforeEach((to, from, next) => {
       else if(authUser || authUser.token){
         // for admin 
          if(to.meta.recruiter){
-          //  console.log('re')
           const authUser = store.getters.currentUser
           if(authUser.role === 2){
             next()
@@ -60,6 +58,18 @@ router.beforeEach((to, from, next) => {
     }
   })
 // important script for component permission
+
+
+const languages = {
+  en: en,
+  ja: ja,
+}
+Vue.use(VueI18n);
+const i18n = new VueI18n({
+  locale: 'ja',
+  messages: languages,
+})
+
 Vue.component('Index',Index)
 
 
@@ -68,5 +78,6 @@ const app = new Vue({
     el: '#app',
     router,
     store,
+    i18n,
 
 });

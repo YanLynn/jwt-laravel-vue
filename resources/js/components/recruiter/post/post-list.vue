@@ -3,8 +3,8 @@
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">description</th>
+                    <th scope="col">{{$t('post.title')}}</th>
+                    <th scope="col">{{$t('post.description')}}</th>
                     
                 </tr>
             </thead>
@@ -24,7 +24,7 @@ import { api }  from '../../../api/v1';
 export default {
     data() {
         return {
-            post:[]
+            post:[],
         }
     },
     mounted() {

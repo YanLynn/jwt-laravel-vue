@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Admin Menu</a>
+      <a class="navbar-brand" href="#">{{$t('menu.recruiter')}}</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -17,13 +17,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <router-link to="/" class="nav-link">Home</router-link>
+            <router-link to="/" class="nav-link">{{$t('menu.Home')}}</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/post" class="nav-link">Post</router-link>
+            <router-link to="/post" class="nav-link">{{$t('menu.post')}}</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/test" class="nav-link">test</router-link>
+            <router-link to="/test" class="nav-link">{{$t('menu.login')}}</router-link>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -36,10 +36,11 @@
               aria-expanded="false"
             >{{currentUser.name}}</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a href="#!" @click.prevent="logout" class="dropdown-item">Logout</a>
+             <a href="#!" @click.prevent="logout" class="dropdown-item">{{$t('menu.logout')}}</a>
             
             </div>
           </li>
+         
         </ul>
       </div>
     </nav>
@@ -50,6 +51,11 @@
 <script>
 export default {
     name: 'app-header',
+    data(){
+      return{
+        //langs:['ja','en']
+      }
+    },
     methods:{
         logout(){
             this.$store.commit('logout');

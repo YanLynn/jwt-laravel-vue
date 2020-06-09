@@ -4,6 +4,9 @@
   </div>
 </template><script>
 export default {
+  mounted(){
+    console.log(this.$store.getters)
+  },
   computed: {
     currentUser() {
       return this.$store.getters.currentUser;

@@ -9,7 +9,7 @@ const route = [
             recruiter:false, // for only admin component
             jobseeker:true
           }
-    }
+    },
 ];
 
 export default route;

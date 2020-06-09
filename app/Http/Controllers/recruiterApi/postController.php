@@ -20,7 +20,6 @@ class postController extends Controller
     }
     public function index()
     {
-       
         return response()->json($this->post->all());
     }
 }

@@ -35,7 +35,7 @@ class AuthController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role = 1;
+        $user->role = 2;
         $user->password = bcrypt($request->password);
 
         $user->save();
@@ -111,7 +111,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'user' => $this->guard()->user(),
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
+            'expires_in' => 60
         ]);
     }
 

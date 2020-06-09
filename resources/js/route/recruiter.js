@@ -15,7 +15,7 @@ const route = [
         component: post,
         meta: {
             reqiuresAuth: false,
-            recruiter:false, // for only admin component
+            recruiter:true, // for only admin component
             jobseeker:false
           }
     }
